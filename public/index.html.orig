@@ -1,0 +1,186 @@
+<html>
+	<head>
+		<title>Kittens!</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+
+    // process the form
+    $('#recipeform').submit(function(event) {
+        event.preventDefault();
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = $("#recipeform").serializeArray();
+
+        function collector(data) {
+          var retval = {};
+
+          for(var i = 0; i < data.length; i++) {
+            // data[i].name  = "name"
+            // data[i].value = "asdfasdf"
+            retval[ data[i].name ] = data[i].value;
+
+            // retval.name      = "asdfasdf"
+            // retval.type      = "werwer"
+            // retval.direction = "werwer"
+          }
+
+          return retval;
+        }
+
+        formData = collector(formData);
+        console.log(formData);
+
+        //formData = collector();
+        $.ajax({
+            type: "POST",
+            url: "/recipes",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function(data) { alert("ajax worked"); console.log(data);  },
+            error:   function(data) { alert("ajax error");  console.log(data);  },
+            dataType: 'json'
+        });
+  });
+$(function () {
+  var $searchBox = $('#search-query');
+  $searchBox.autocomplete({
+      source: function (request, response) {
+         $.ajax({
+            url: "/search_recipe",
+            type: "GET",
+	    dataType: "json",
+	    data: {
+		q: request.term
+		},
+		success: function( data ) {
+            response( $.map(data.results, function(item ){
+		return {
+		label:item,
+		value: item
+		}
+          }));
+        },
+      
+		/*success: function(ajaxResponse) {
+    var values = [];
+    for (i = 0; i < ajaxResponse.Results.length; i++) {
+        values.push(ajaxResponse.Results[i].Name);
+    };
+    response(values);
+console.log(ajaxResponse);
+}*/
+            
+         
+         
+         // The minimum number of characters a user must type before a search is performed.
+         minLength: 3, 
+   	 select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.label :
+          "Nothing selected, input was " + this.value);
+      },
+      open: function() {
+        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+      },
+      close: function() {
+        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+      }
+    });
+  }
+}
+});
+});       
+
+</script>
+<style type="text/css">
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 50px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 24px;
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 396px;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 24px;
+	line-height: 24px;
+	padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
+	</head>
+<body>
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1>Processing an AJAX Form</h1>
+
+<input class="typeahead tt-query" id="search-query" spellcheck="false" autocomplete="off" name="typeahead" type="text" />
+
+    <!-- OUR FORM -->
+    <form id="recipeform" action="/recipes" method="POST">
+        <!-- NAME -->
+        <div id="name-group" class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Henry Pym">
+            <!-- errors will go here -->
+        </div>
+
+        <!-- EMAIL -->
+        <div id="email-group" class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="type" placeholder="rudd@avengers.com">
+            <!-- errors will go here -->
+        </div>
+
+        <!-- SUPERHERO ALIAS -->
+        <div id="superhero-group" class="form-group">
+            <label for="superheroAlias">Superhero Alias</label>
+            <input type="text" class="form-control" name="directions" placeholder="Ant Man">
+            <!-- errors will go here -->
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+
+    </form>
+
+</div>
+</body>
+</html>

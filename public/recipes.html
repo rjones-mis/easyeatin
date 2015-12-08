@@ -1,0 +1,257 @@
+<!--A Design by Ryan Jones
+Author: Ryan Jones
+Author URL: http://ryan-jones.me
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Hot Foods a Hotel Category Flat Bootstarp Responsive Website Template | Recipes :: w3layouts</title>
+
+
+  <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+  <link href="css/style.css" rel='stylesheet' type='text/css' />
+  <!-- jQuery (necessary JavaScript plugins) -->
+  <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+
+  <!-- Custom Theme files -->
+
+  <!-- Custom Theme files -->
+  <!--//theme-style-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Hot Foods Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+  Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+</head>
+<body>
+  <!-- header -->
+  <div class="banner banner2">
+    <div class="container">
+      <div class="banner_head_top">
+        <div class="banner-head">
+          <div class="logo">
+            <h1><a href="index.html">Hot<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span><span>Foods</span></a></h1>
+          </div>
+          <div class="headr-right">
+            <div class="details">
+              <ul>
+                <li><a href="mailto:easyeatinteam@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>easyeatinteam@gmail.com</a></li>
+                <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(+1)408 924 1000</li>
+                <li><div style="margin: 15px 0px 0px; display: inline-block; text-align: center; width: 200px;"><div style="display: inline-block; padding: 2px 4px; margin: 0px 0px 5px; border: 1px solid rgb(204, 204, 204); text-align: center; background-color: rgb(27, 115, 44);"></div></div></li>
+              </ul>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="top-menu">
+          <div class="content white">
+            <nav class="navbar navbar-default">
+              <div class="navbar-header">
+                <button type="button" class="menu" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="icon-bar">MENU</span>
+                </button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <!--/navbar header-->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="recipes.html">Recipes</a></li>
+                  <li><a href="gallery.html">Gallery</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+              <!--/navbar collapse-->
+            </nav>
+            <!--/navbar-->
+          </div>
+          <div class="clearfix"></div>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+          <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+
+  <div class="recp-sec">
+    <div class="container">
+      <h2 style= padding-bottom: .2em;>Search Recipes</h2>
+      <div style ="width: 100%; text-align: center;">
+        <form id="form_search" style = "display: inline-block;">
+          <input type="text"   class ="typeahead tt-query" name="input_search" />
+          <input type="submit" name="input_submit" />
+        </form>
+
+      <br />
+
+      <h3>Results</h3>
+      <div class="recip-grid">
+      <ul id="search_listing" style = "list-style-type: none; "></ul>
+      <br />
+    </div>
+
+          <ul id="myList">
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+      <script type="text/javascript">
+      // Document has been loaded at this point
+      // Create jQuery handles for elements
+      var form_search = $("#form_search");
+      var search_listing = $("#search_listing");
+
+      $.ajax({
+        type: "GET",
+        url: "/recipes",
+        dataType: 'json'
+      }).then(
+        function success(res) {
+          // Populate recipe fields
+          console.log(res);
+          if (res.length > 0){
+            var retrecipes = "";
+            for(var e = 0; e < res.length; e++){
+
+              var postdoc = '<li><div class="l_g">';
+              postdoc += "<div class='col-md-4 recip-sec'>";
+              if (res[e].image){
+                postdoc += "<img src='" + res[e].image + "' alt=''/>";
+              }
+              postdoc += "<h3><a href='/recipe.html?id=" + res[e]._id + "'>" + res[e].name + "</a></h3>";
+              postdoc += "</div><div class='clearfix'></div></div></li>";
+
+              retrecipes += postdoc;
+            }
+            search_listing.html (retrecipes);
+          } else {
+
+            retrecipes += '<li>No Recipes Available</li>';
+          }
+          console.log(retrecipes);
+  search_listing.html (retrecipes);
+        },
+
+        function error(res)   { console.log(res);  }
+      );
+
+      function GetQueryString() {
+        // Retrieves query string from URL
+        // From http://www.jquerybyexample.net/2012/05/how-to-get-querystring-value-using.html
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+
+        var retval = {};
+        for (var i = 0; i < sURLVariables.length; i++) {
+          var sParameterName = sURLVariables[i].split('=');
+          retval[sParameterName[0]] = sParameterName[1];
+        }
+
+        return retval;
+      }
+      var query = GetQueryString();
+
+      var search_listing =  $("#search_listing");
+      // Only run this if "q=" is defined in query
+      if(query.q) {
+        $.ajax({
+          type: "GET",
+          url: "/recipes",
+          contentType: "application/json",
+          data: { "q": decodeURI(query.q) },
+          dataType: "json"
+        }).then(
+          function success(res) {
+            // Populate recipe fields
+            if(res.length > 0) {
+              // Create response listing
+              console.log(res);
+              var retval = "";
+
+              for(var i = 0; i < res.length; i++) {
+                retval += '<li><a href="/recipe.html?id=' +
+                res[i]._id +
+                '">' +
+                res[i].name +
+                '</a>';
+              }
+
+              search_listing.html(retval);
+            } else {
+              search_listing.html("<li>No results</li>");
+            }
+          },
+
+          function error(res)   { console.log(res);  }
+        );
+      }
+
+      // Override form_search submit to send as a query instead
+      form_search.on("submit", function(ev) {
+        ev.preventDefault();
+        var data = {};
+        $.each(form_search.serializeArray(), function(_, kv) { data[kv.name] = kv.value; });
+        console.log(data);
+
+        // Refresh page with added query
+        var url = window.location.pathname + "?q=" + data.input_search;
+        console.log(url);
+        window.location.href = url;
+      });
+      </script>
+
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="footer-sec">
+          <div class="col-md-4 ftr-grid1">
+            <h3>Latest Tweets</h3>
+            <div class="twts">
+              <h5>Here's the founder's website!</h5>
+              <a href="http://ryan-jones.me">http://ryan-jones.me</a>
+            </div>
+            <div class="twts">
+              <h5>Have a problem send us an email!</h5>
+              <a href="mailto:easyeatinteam@gmail.com">easyeatin@gmail.com</a>
+            </div>
+          </div>
+          <div class="col-md-4 news-ltr">
+            <h3>NewsLetter</h3>
+            <p>By providing your email below you are subscribing to our monthly newsletter. You will receive website updates and the newest added recipes. Advertisements will not be included in the email.</p>
+   				 <form>
+                <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+                <input type="submit" value="Go">
+                <div class="clearfix"></div>
+              </form>
+            </div>
+            <div class="col-md-4 social">
+              <h3>Social Media</h3>
+              <a href="#"><i class="facebook"></i></a>
+              <a href="http://twitter.com/Easyeatinteam"><i class="twitter"></i></a>
+              <a href="#"><i class="google"></i></a>
+              <a href="#"><i class="youtube"></i></a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="copywrite">
+        <div class="container">
+          <p>Copyright © 2015 Easyeatinteam | Design by <a href="http://ryan-jones.me">Ryan Jones</a></p>
+        </div>
+      </div>
+      <!---->
+    </body>
+    </html>

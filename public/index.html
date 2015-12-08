@@ -1,0 +1,261 @@
+<!--A Design by Ryan Jones
+Author: Ryan Jones
+Author URL: http://ryan-jones.me
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Easyeatin | Home</title>
+
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary JavaScript plugins) -->
+<script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+<!-- Custom Theme files -->
+
+<!-- Custom Theme files -->
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Hot Foods Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script>
+function date_time(id)
+{
+        date = new Date;
+        year = date.getFullYear();
+        month = date.getMonth();
+        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+        d = date.getDate();
+        day = date.getDay();
+        days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+        h = date.getHours();
+        if(h<10)
+        {
+                h = "0"+h;
+        }
+        m = date.getMinutes();
+        if(m<10)
+        {
+                m = "0"+m;
+        }
+        s = date.getSeconds();
+        if(s<10)
+        {
+                s = "0"+s;
+        }
+        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+        document.getElementById(id).innerHTML = result;
+        setTimeout('date_time("'+id+'");','1000');
+        return true;
+}
+</script>
+
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+	 <div class="container">
+		 <div class="banner_head_top">
+			 <div class="banner-head">
+				 <div class="logo">
+					 <h1><a href="index.html">Hot<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span><span>Foods</span></a></h1>
+				 </div>
+				 <div class="headr-right">
+					 <div class="details">
+						 <ul>
+							 <li><a href="mailto:easyeatinteam@gmail.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>easyeatinteam@gmail.com</a></li>
+							 <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(+1)408 924 1000</li>
+               <li><span id="date_time"></span></li>
+            <script type="text/javascript">window.onload = date_time('date_time');</script>
+						 </ul>
+					 </div>
+				 </div>
+				 <div class="clearfix"></div>
+			 </div>
+			 <div class="top-menu">
+			 <div class="content white">
+				 <nav class="navbar navbar-default">
+					 <div class="navbar-header">
+						 <button type="button" class="menu" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="icon-bar">MENU</span>
+						</button>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					 </div>
+					 <!--/navbar header-->
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						 <ul class="nav navbar-nav">
+							 <li class="active"><a href="index.html">Home</a></li>
+							 <li><a href="about.html">About</a></li>
+								<li><a href="recipes.html">Recipes</a></li>
+							 <li><a href="gallery.html">Gallery</a></li>
+							 <li><a href="contact.html">Contact</a></li>
+						 </ul>
+						</div>
+					  <!--/navbar collapse-->
+				 </nav>
+				  <!--/navbar-->
+			 </div>
+				 <div class="clearfix"></div>
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+				<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+			  </div>
+		  </div>
+		  <div class="banner-info">
+			 <h2>A Recipe Site</h2>
+			 <label></label>
+			 <h4>For Students <span>By Students.</span></h4>
+			 <a class="btn-left" href="about.html">About Us</a>
+			 <a class="btn-right" href="recipes.html">Search</a>
+		 </div>
+	 </div>
+</div>
+<!---->
+<div class="welcome">
+	 <div class="container">
+		 <h3>Welcome !</h3>
+		 <p>We made this site in hopes that we could help other students learn easy recipes that would work well with their busy class schedules. This brought us to the here and now.</p>
+		 <div class="welcome_pic">
+			 <img src="images/wel.png" alt=""/>
+		 </div>
+	</div>
+</div>
+<div class="company">
+	 <div class="container">
+		 <h3>Services</h3>
+		 <div class="service-grids">
+		  <div class="col-md-4 commpany-grid">
+				 <div class="grid-pic">
+					 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				 </div>
+				 <div class="grid-info">
+					 <h4>Quality Recipes</h4>
+					 <p>We offer all students across the globe access to quality recipes so they can cook a quality meal for themselves. </p>
+				 </div>
+				 <div class="clearfix"></div>
+		  </div>
+		  <div class="col-md-4 commpany-grid">
+				 <div class="grid-pic">
+					<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+				 </div>
+				 <div class="grid-info">
+					 <h4>Low Prices</h4>
+					 <p>We know students are on a budget so we try to keep prices low. </p>
+				 </div>
+				 <div class="clearfix"></div>
+		  </div>
+		  <div class="col-md-4 commpany-grid">
+				 <div class="grid-pic">
+					  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				 </div>
+				 <div class="grid-info">
+					 <h4>User Community</h4>
+					 <p>Built for students by students, we offer the ability for you to submit your own recipes. </p>
+				 </div>
+				 <div class="clearfix"></div>
+		  </div>
+			<div class="clearfix"></div>
+			</div>
+	  </div>
+</div>
+<!---->
+
+<!---->
+<div class="latest_news">
+	 <div class="container">
+	     <div class="news-sec">
+			 <div class="col-md-6 news">
+					 <div class="news-head">
+						 <h3>Latest News</h3>
+					 </div>
+					 <div class="news_grid">
+						 <img src="images/l1.jpg" class="img-responsive" alt=""/>
+						 <h4><a href="about.html">Easyeatin goes live!</a></h4>
+						 <p class="date">7th December, 2015</p>
+						 <p>Easyeatin goes live bringing many students across the globe easy access to recipes! Meet the team, search the site, enjoy the recipes!</p>
+						 <a class="read" href="about.html">Read More...</a>
+					 </div>
+			 </div>
+			 <div class="col-md-6 testimonal">
+					 <div class="testi-head">
+						 <h3>Testimonals</h3>
+					 </div>
+					 <div class="testi-grids">
+						 <div class="testi-grid">
+							 <div class="people">
+								 <img src="images/t1.jpg" class="img-responsive" alt=""/>
+							 </div>
+							 <div class="testi-info">
+								 <h4>Ryan</h4>
+								 <a href="about.html">Founder</a>
+								 <p>This site is the bomb!</p>
+							 </div>
+							 <div class="clearfix"></div>
+						 </div>
+						 <div class="testi-grid testi2">
+							 <div class="people">
+								 <img src="images/t2.jpg" class="img-responsive" alt=""/>
+							 </div>
+							 <div class="testi-info">
+								 <h4>Steve</h4>
+								 <a href="feedback.html">Random Student</a>
+								 <p>Their recipes are so good, I make them all the time!</p>
+							 </div>
+							 <div class="clearfix"></div>
+						 </div>
+					 </div>
+			  </div>
+			  <div class="clearfix"></div>
+		 </div>
+	 </div>
+</div>
+<!---->
+<div class="footer">
+  <div class="container">
+    <div class="footer-sec">
+      <div class="col-md-4 ftr-grid1">
+        <h3>Latest Tweets</h3>
+        <div class="twts">
+          <h5>Here's the founder's website!</h5>
+          <a href="http://ryan-jones.me">http://ryan-jones.me</a>
+        </div>
+        <div class="twts">
+          <h5>Have a problem send us an email!</h5>
+          <a href="mailto:easyeatinteam@gmail.com">easyeatin@gmail.com</a>
+        </div>
+      </div>
+      <div class="col-md-4 news-ltr">
+        <h3>NewsLetter</h3>
+        <p>By providing your email below you are subscribing to our monthly newsletter. You will receive website updates and the newest added recipes. Advertisements will not be included in the email.</p>
+       <form>
+            <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
+            <input type="submit" value="Go">
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="col-md-4 social">
+          <h3>Social Media</h3>
+          <a href="#"><i class="facebook"></i></a>
+          <a href="http://twitter.com/Easyeatinteam"><i class="twitter"></i></a>
+          <a href="#"><i class="google"></i></a>
+          <a href="#"><i class="youtube"></i></a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="copywrite">
+    <div class="container">
+      <p>Copyright © 2015 Easyeatinteam | Design by <a href="http://ryan-jones.me">Ryan Jones</a></p>
+    </div>
+  </div>
+  <!---->
+
+</body>
+</html>

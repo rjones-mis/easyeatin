@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+  <form id="form_search">
+    <input type="text"   name="input_search" />
+    <input type="submit" name="input_submit" />
+  </form>
+  <br />
+
+  <h3>Results</h3>
+  <ul id="search_listing"></ul>
+  <br />
+
+<script type="text/javascript">
+// Document has been loaded at this point
+// Create jQuery handles for elements
+var form_search = $("#form_search");
+
+function GetQueryString() {
+  // Retrieves query string from URL
+  // From http://www.jquerybyexample.net/2012/05/how-to-get-querystring-value-using.html
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split('&');
+
+  var retval = {};
+  for (var i = 0; i < sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split('=');
+    retval[sParameterName[0]] = sParameterName[1];
+  }
+
+  return retval;
+}
+var query = GetQueryString();
+
+var search_listing =  $("#search_listing");
+// Only run this if "q=" is defined in query
+if(query.q) {
+  $.ajax({
+    type: "GET",
+    url: "/recipes",
+    contentType: "application/json",
+    data: { "q": decodeURI(query.q) },
+    dataType: "json"
+  }).then(
+    function success(res) {
+      // Populate recipe fields
+      if(res.length > 0) {
+        // Create response listing
+        console.log(res);
+        var retval = "";
+
+        for(var i = 0; i < res.length; i++) {
+          retval += '<li><a href="/recipe.html?id=' +
+                    res[i]._id +
+                    '">' +
+                    res[i].name +
+                    '</a></li>';
+        }
+
+        search_listing.html(retval);
+      } else {
+        search_listing.html("<li>No results");
+      }
+    },
+
+    function error(res)   { console.log(res);  }
+  );
+}
+
+// Override form_search submit to send as a query instead
+form_search.on("submit", function(ev) {
+  ev.preventDefault();
+  var data = {};
+  $.each(form_search.serializeArray(), function(_, kv) { data[kv.name] = kv.value; });
+  console.log(data);
+
+  // Refresh page with added query
+  //var url = window.location.pathname + "?q=" + data.input_search;
+  //console.log(url);
+  //window.location.href = url;
+});
+</script>
+</body>
+
+</html>
